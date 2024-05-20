@@ -196,3 +196,14 @@
 // }, 0);
 
 // console.log(totalCoin)
+
+// VD2
+
+// var number = [1, 2, [3, 4], 5, 6, [7, 8], 9];
+
+// var flatnumber = number.reduce(function(flatOutput, numberItem) {
+//     return flatOutput.concat(numberItem);
+// }, []);
+
+// console.log(flatnumber);
+
