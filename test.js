@@ -96,3 +96,239 @@
 //   5 15`;
 //   const output = calcPixelDensity(input);
 //   console.log(output);
+
+//Bài tập in ra những giá trị khác nhau trong mảng
+
+//Test 1 in số lượng phần tử khác nhau
+// đề bài là: đếm số lượng giá trị khác nhau trong 1 mảng cho trước.
+// Ví dụ mảng A[] = {1, 3, 4, 5, 5, 2, 4, 8, 1, 2, 3}
+// kết quả in ra màng hình
+// số lượng phần tử trong mảng khác nhau là: 6
+
+// const arr = [1, 3, 4, 5, 5, 2, 4, 8, 1, 2, 3];
+// const uniqueValues = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//     let isDuplicate = false;                                                               //Vòng lặp đầu tiên sẽ cho giá trị là false để kiểm tra arr[i] có trong mảng uniqueValues hay chưa
+  
+//     // Kiểm tra xem giá trị hiện tại đã xuất hiện trước đó hay chưa
+//     for (let j = 0; j < uniqueValues.length; j++) {                                        //Vòng lặp lồng sẽ kiểm tra xem nếu giá trị arr[i] tồn tại trong mảng uniqueValue thì sẽ là trả về true
+//       if (arr[i] === uniqueValues[j]) {                                                    //và thoát khỏi vòng lặp bằng break và giá trị đó sẽ không được thêm vào mảng uniqueValues
+//         isDuplicate = true;
+//         break;
+//       }
+//     }
+  
+//     // Nếu giá trị chưa xuất hiện trước đó, thêm nó vào mảng uniqueValues
+//     if (!isDuplicate) {                                                                    //Lệnh if sẽ thực thi nếu mà vòng lặp lồng trả về false phủ đinh !isDuplicate sẽ trả về true
+//       uniqueValues.push(arr[i]);                                                           //Phương thức push sẽ thêm giá trị vào mảng uniqueValues
+//       console.log(arr[i]);
+//     }
+//   }
+
+//Cách làm 2
+
+// function countDistinctElements(arr) {
+//     let distinctCount = 0;
+//     let uniqueElements = [];
+  
+//     for (let i = 0; i < arr.length; i++) {
+//       if (!uniqueElements.includes(arr[i])) {
+//         uniqueElements.push(arr[i]);
+//         distinctCount++;
+//       }
+//     }
+  
+//     return distinctCount;
+//   }
+
+// const Array = [1, 3, 4, 5, 5, 2, 4, 8, 1, 2, 3];
+// const distinctCount = countDistinctElements(Array);
+// console.log(distinctCount)
+
+// Test 2 Tìm giá trị trùng nhau
+// liệt kê
+// các phần tử trùng nhau
+// trong 1 mảng cho trước
+// [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3]
+
+// const arr = [1, 1, 3, 5, 6, 3, 4, 5, 7, 8, 2, 3, 5, 6, 7, 8, 9, 6, 5, 4, 3];
+// const duplicates = [];
+
+// // Vòng lặp bên ngoài để duyệt qua từng phần tử của mảng
+// for (let i = 0; i < arr.length; i++) {
+//   let isDuplicate = false;                                                                            //Cho isDuplicate = false để theo dõi phần tử hiện tại có phải là phần tử trùng lặp hay không?
+  
+//   // Vòng lặp bên trong để kiểm tra xem phần tử hiện tại đã xuất hiện trước đó hay chưa
+//   for (let j = 0; j < i; j++) {                                                                       //Với điều kiện j < i có nghĩa là arr[i] lấy chỉ mục giá trị lớn nhất trong mảng để so sánh với arr[j] lấy
+//     if (arr[i] === arr[j]) {                                                                          //chỉ mục giá trị nhỏ nhất. Và nếu 2 chỉ mục này có những giá trị bằng nhau thì sẽ trả về là true và thoát
+//       isDuplicate = true;                                                                             //khỏi vòng lặp. Nếu có chỉ mục giá trị nào chỉ xuất hiện 1 lần thì sẽ trả về false và không đưa giá trị đó
+//       break;                                                                                          //vào mảng duplicate
+//     }
+//   }
+  
+//   // Nếu phần tử đã xuất hiện trước đó và chưa được thêm vào mảng duplicates
+//   if (isDuplicate && !duplicates.includes(arr[i])) {                                                  //Nếu isDuplicate = true thì sẽ sử dụng phương thức push để thêm arr[i] vào mảng
+//     duplicates.push(arr[i]);
+//   }
+// }
+
+// console.log(duplicates);
+
+//Cách dùng 2
+
+// const arr = [1, 1, 3, 5, 6, 3, 4, 5, 7, 8, 2, 3, 5, 6, 7, 8, 9, 6, 5, 4, 3];
+// const duplicates = [];
+
+// for (let i = 0; i < arr.length; i++) {                                                                   //Duyệt từng giá trị trong mảng arr
+//   let count = 0;                                                                                         //Đặt giá trị bằng 0 để đếm giá trị trùng lặp sau mỗi lần thực thi
+//   for (let j = 0; j < arr.length; j++) {                                                                 //Duyệt từng giá trị trong mảng arr
+//     if (arr[i] === arr[j] && i !== j) {                                                                  //Điều kiện arr[i] === arr[j] && i !== j nếu 2 điều kiện hợp lệ (arr[i] sẽ lấy chỉ mục giá trị hiện tại trong vong lặp bên ngoài và arr[j] sẽ lấy chỉ mục giá trị vòng lặp bên trong. Có nghĩa là arr[j] sẽ luôn lấy chỉ mục giá trị bé hơn 1 để kiểm tra điều kiện)
+//       count++;                                                                                           //Thì count sẽ tăng thêm 1
+//     }
+//   }
+//   if (count > 0 && !duplicates.includes(arr[i])) {                                                        //Kiểm tra điều kiện count > 0 và arr[i] không có trong duplicate thì sẽ dùng phương thức push() để thêm                                              
+//     duplicates.push(arr[i]);                                                                              //giá trị arr[i] vào duplicate
+//   }
+// }
+
+// console.log(duplicates); // Output: [1, 3, 5, 6, 8]
+
+//Cách 3
+
+// const arr = [1, 1, 3, 5, 6, 3, 4, 5, 7, 8, 2, 3, 5, 6, 7, 8, 9, 6, 5, 4, 3];
+// const duplicates = [];
+
+// for (let i = 0; i < arr.length; i++) {                                                                      //Vòng lặp này sẽ duyệt mảng arr
+//   let found = false;                                                                                        //Khai báo biến found gán giá trị là false để kiểm tra giá trị arr[i] có phải là giá trị trùng lăp hay không
+//   for (let j = 0; j < i; j++) {                                                                             //Với vòng lặp for này sẽ duyệt giá trị trong vòng lặp trong
+//     if (arr[i] === arr[j]) {                                                                                //if có điều kiện arr[i] === arr[j] có nghĩa là arr[i] sẽ lấy giá trị ngoài vòng lặp và arr[j] lấy giá trị trong vòng lặp
+//       found = true;                                                                                         //Nếu điều kiện trên thỏa mãn thì found sẽ trả về là true và thoát khỏi vòng lặp là break;
+//       break;
+//     }
+//   }
+
+//   if (found) {                                                                                              //Nếu found trả về là true thì câu lệnh sẽ được thực thi nhiệm vụ tiếp theo
+//     let isDuplicate = false;                                                                                //Khai báo biến isDuplicate = false kiểm tra xem arr[i] có trong mảng duplicate chưa
+//     for (let k = 0; k < duplicates.length; k++) {                                                           //Duyệt giá trị trong mảng duplicates
+//       if (arr[i] === duplicates[k]) {                                                                       //Câu lệnh if (arr[i] === duplicates[k]) nếu hợp lệ sẽ trả về là true và thoát khỏi vòng lặp break;
+//         isDuplicate = true;                                                                                 
+//         break;
+//       }
+//     }
+//     if(!isDuplicate) {                                                                                      //Kiểm tra xem nếu phần !isDuplicate = true thì sẽ thêm giá trị vào mảng và nếu isDuplicate = true; thì sẽ ngừng lại ko thực thi nữa.
+//       duplicates.push(arr[i])
+//     }
+//   }
+// }
+
+// console.log(duplicates); // Output: [1, 3, 5, 6, 8]
+
+//Test 3 đếm số lần xuất hiện của các phần tử
+// liệt kê
+// đếm số lần xuất hiện của các phần tử
+// trong 1 mảng cho trước
+// [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3]
+
+// const arr = [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3];
+// const duplicates = [];
+// const counts = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//     let isDuplicate = false;
+
+//     for (let j = 0; j < duplicates.length; j++) {
+//         if (arr[i] === duplicates[j]) {
+//             isDuplicate = true;
+//             break;
+//         }
+//     }
+//     if (!isDuplicate) {
+//         duplicates.push(arr[i])
+//         counts.push(1)
+//     }
+// }
+
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < duplicates.length; j++) {
+//       if (arr[i] === duplicates[j]) {
+//         counts[j]++;
+//       }
+//     }
+//   }
+
+// for (let i = 0; i < duplicates.length; i++) {
+//     console.log(`Phần tử ${duplicates[i]} xuất hiện ${counts[i]} lần`);
+// }
+
+//Cách làm 2
+
+// const myArray = [1, 1, 3, 5, 6, 3, 4, 5, 7, 8, 2, 3, 5, 6, 7, 8, 9, 6, 5, 4, 3];
+// const frequencyArray = [];
+
+// // Khởi tạo mảng frequencyArray với giá trị 0 cho tất cả các phần tử
+// for (let i = 0; i < 10; i++) {                                                                  //Điều kiện i < 10, vậy thì biến frequencyArray[i] = 0 sẽ được duyệt vào mảng frequencyArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//   frequencyArray[i] = 0;
+// }
+
+// // Đếm số lần xuất hiện của các phần tử
+// for (let i = 0; i < myArray.length; i++) {                                                      //Duyệt mảng myArray
+//   const element = myArray[i];                                                                   //Gán giá trị myArray[i] vào element => element = myArray[0] = 1
+//   frequencyArray[element]++;                                                                    //frequencyArray[element]++ => frequencyArray[1]++ sẽ cộng vào mảng frequencyArray để đếm số lần xuất hiện của mỗi phần tử
+// }
+
+// // Hiển thị kết quả
+// for (let i = 0; i < frequencyArray.length; i++) {                                               //Duyệt mảng frequencyArray
+//   if (frequencyArray[i] > 0) {                                                                  //Điều kiện nếu trong mảng frequencyArray lớn hơn 0 thì sẽ thỏa mãn điều kiện và in ra console.log
+//     console.log(`Phần tử ${i} xuất hiện ${frequencyArray[i]} lần`);
+//   }
+// }
+
+//Test 1 in số lượng phần tử khác nhau
+// đề bài là: đếm số lượng giá trị khác nhau trong 1 mảng cho trước.
+// Ví dụ mảng A[] = {1, 3, 4, 5, 5, 2, 4, 8, 1, 2, 3}
+// kết quả in ra màng hình
+// số lượng phần tử trong mảng khác nhau là: 6
+
+// const arr = [1, 3, 4, 5, 5, 2, 4, 8, 1, 2, 3];
+// const listArr = [];
+
+// for (let i = 0; i < arr.length; i++ ) {
+//     let isDuplicate = false;
+
+//     for (let j = 0; j < listArr.length; j++) {
+//         if (arr[i] === arr[j]) {
+//             isDuplicate = true;
+//             break;
+//         }
+//     }
+//     if (!isDuplicate) {
+//         listArr.push(arr[i]);
+//         console.log(arr[i])
+//     }
+// }
+
+// Test 2 Tìm giá trị trùng nhau
+// liệt kê
+// các phần tử trùng nhau
+// trong 1 mảng cho trước
+// [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3]
+
+const arr = [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3];
+const duplicate = [];
+
+for (let i = 0; i < arr.length; i++) {
+    let isDuplicate = false;
+
+    for (let j = 0; j < i; j++) {
+        if (arr[i] === arr[j]) {
+            isDuplicate = true;
+            break;
+        }
+    }
+
+    if (isDuplicate && !duplicate.includes(arr[i])) {
+        duplicate.push(arr[i])
+        console.log(arr[i])
+    }
+}
