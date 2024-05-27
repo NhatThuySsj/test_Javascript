@@ -111,15 +111,13 @@
 // for (let i = 0; i < arr.length; i++) {
 //     let isDuplicate = false;                                                               //Vòng lặp đầu tiên sẽ cho giá trị là false để kiểm tra arr[i] có trong mảng uniqueValues hay chưa
   
-//     // Kiểm tra xem giá trị hiện tại đã xuất hiện trước đó hay chưa
 //     for (let j = 0; j < uniqueValues.length; j++) {                                        //Vòng lặp lồng sẽ kiểm tra xem nếu giá trị arr[i] tồn tại trong mảng uniqueValue thì sẽ là trả về true
 //       if (arr[i] === uniqueValues[j]) {                                                    //và thoát khỏi vòng lặp bằng break và giá trị đó sẽ không được thêm vào mảng uniqueValues
 //         isDuplicate = true;
 //         break;
 //       }
 //     }
-  
-//     // Nếu giá trị chưa xuất hiện trước đó, thêm nó vào mảng uniqueValues
+
 //     if (!isDuplicate) {                                                                    //Lệnh if sẽ thực thi nếu mà vòng lặp lồng trả về false phủ đinh !isDuplicate sẽ trả về true
 //       uniqueValues.push(arr[i]);                                                           //Phương thức push sẽ thêm giá trị vào mảng uniqueValues
 //       console.log(arr[i]);
@@ -314,21 +312,81 @@
 // trong 1 mảng cho trước
 // [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3]
 
-const arr = [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3];
-const duplicate = [];
+// const arr = [1,1,3,5,6,3,4,5,7,8,2,3,5,6,7,8,9,6,5,4,3];
+// const duplicate = [];
 
-for (let i = 0; i < arr.length; i++) {
-    let isDuplicate = false;
+// for (let i = 0; i < arr.length; i++) {
+//     let isDuplicate = false;
 
-    for (let j = 0; j < i; j++) {
-        if (arr[i] === arr[j]) {
-            isDuplicate = true;
-            break;
-        }
-    }
+//     for (let j = 0; j < i; j++) {
+//         if (arr[i] === arr[j]) {
+//             isDuplicate = true;
+//             break;
+//         }
+//     }
 
-    if (isDuplicate && !duplicate.includes(arr[i])) {
-        duplicate.push(arr[i])
-        console.log(arr[i])
-    }
-}
+//     if (isDuplicate && !duplicate.includes(arr[i])) {
+//         duplicate.push(arr[i])
+//         console.log(arr[i])
+//     }
+// }
+
+
+//Test 1
+
+// Một công ty quyết định sản xuất lại Ti vi để tung ra thị trường và màn hình Ti vi có chính xác n pixel.
+// Nhiệm vụ của bạn là xác định kích thước của màn hình Ti vi sao cho chiều rộng và chiều dài chênh lệch nhau ít nhất.
+
+// Input Output
+// 8       2 4
+// 64      8 8
+// 5       1 5
+
+// function findDimensions(n) {                                                            //Hàm findDimensions(n) chứa tham số n và lưu trữ giá trị trả về của return và lưu về output
+//     let a = 1;                                                                          //Gán giá trị a và b bằng 1 và n sao cho a * b = n
+//     let b = n;
+    
+//     for (let i = 1; i * i <= n; i++) {                                                  //Điều kiện: i = 1; i * i <= n (tương đương với i <= sqrt(n) căn bậc 2 của n); i++
+//         if (n % i === 0) {                                                              //Nếu n % i === 0 thì sẽ thực thi câu lệnh dưới
+//             let j = n / i;                                                              //j = n / i thì j sẽ có giá trị là kết quả của n / i
+            
+//             if (Math.abs(i - j) < Math.abs(a - b)) {                                    //Nếu điều kiện trong này thỏa mãn (abs(i - j) < abs(a - b) và (i - j) là hiệu bé nhất) thì a và b sẽ được gán giá trị i và j
+//                 a = i;
+//                 b = j;
+//             }
+//         }
+//     }
+    
+//     return [a, b];                                                                      //return [a, b] trả về cho hàm findDimensions(n) để lưu trữ output
+// }
+
+// let inputs = [8, 64, 5];
+// for (let i = 0; i < inputs.length; i++) {
+//     let output = findDimensions(inputs[i]);                                             //hàm findDimensions được gọi với đầu vào là inputs[i]. Ở lần lặp đầu tiên, i bằng 0 nên inputs[0] là 8. Kết quả trả về của hàm findDimensions(8) sẽ được gán cho biến output.
+//     console.log("Input:", inputs[i], "Output:", output);
+// }
+
+//Test 2
+
+// const a = [10, 17, 22, 19, 17, 13, 20, 14, 27, 29, 12];
+// const b = [5, 3, 5, 5, 5, 4, 2, 2, 1, 2, 3];
+// const t = 5;
+// const output = [];
+
+// for (let day = 0; day <= t; day++) {
+//   let totalWater = 0;
+//   for (let i = 0; i < a.length; i++) {
+//     let water = a[i];
+//     for (let j = 0; j < day; j++) {
+//       water -= b[i];
+//       if (water < 0) {
+//         water = 0;
+//         break;
+//       }
+//     }
+//     totalWater += water;
+//   }
+//   output.push(totalWater);
+// }
+
+// console.log(output);
